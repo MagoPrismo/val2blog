@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sempre val</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #1e1e2f;
+      color: #f0e6ff;
+    }
+    header {
+      background-color: #282840;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #ffb6f9;
+    }
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    .post {
+      background-color: #2c2c45;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .post.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .post h2 {
+      color: #ffaaff;
+      margin-top: 0;
+    }
+    .post p {
+      line-height: 1.6;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sempre val</h1>
+    <p>Jovens em ação — acompanhando cada passo rumo à atividade de estaca</p>
+  </header>
+
+  <div class="container" id="posts-container">
+    <!-- Posts serão inseridos aqui via JavaScript -->
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Sempre val. Feito com carinho 💜</p>
+  </footer>
+
+  <script>
+    const posts = [];
+    for (let i = 1; i <= 15; i++) {
+      posts.push({
+        titulo: `Post ${i}`,
+        conteudo: `Este é o conteúdo do post número ${i}. Ele fala sobre como os jovens estão avançando em suas tarefas de maneira inspiradora.`
+      });
+    }
+
+    const container = document.getElementById('posts-container');
+
+    posts.forEach(post => {
+      const div = document.createElement('div');
+      div.className = 'post';
+      div.innerHTML = `<h2>${post.titulo}</h2><p>${post.conteudo}</p>`;
+      container.appendChild(div);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.post').forEach(post => {
+      observer.observe(post);
+    });
+  </script>
+</body>
+</html>
