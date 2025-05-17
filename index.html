@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sempre val</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #1e1e2f;
+      color: #f0e6ff;
+    }
+    header {
+      background-color: #282840;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #ffb6f9;
+    }
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    .post {
+      background-color: #2c2c45;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .post h2 {
+      color: #ffaaff;
+      margin-top: 0;
+    }
+    .post p {
+      line-height: 1.6;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sempre val</h1>
+    <p>Jovens em ação — acompanhando cada passo rumo à atividade de estaca</p>
+  </header>
+
+  <div class="container" id="posts-container">
+    <!-- Posts serão inseridos aqui via JavaScript -->
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Sempre val. Feito com carinho 💜</p>
+  </footer>
+
+  <script>
+    const posts = [
+      {
+        titulo: "Primeiro Encontro",
+        conteudo: "Sábado dia 17/05 será nosso primeiro encontro para realizarmos algumas metas."
+      },
+      {
+        titulo: "Desafio da Semana",
+        conteudo: "Cada jovem recebeu tarefas para cumprir até o próximo sábado. Vamos acompanhar o progresso e celebrar cada conquista."
+      },
+      {
+        titulo: "Envolvimento da Galera",
+        conteudo: "Todos estão se empenhando! Alguns jovens compartilharam como têm colocado em prática os valores aprendidos."
+      }
+    ];
+
+    const container = document.getElementById('posts-container');
+
+    posts.forEach(post => {
+      const div = document.createElement('div');
+      div.className = 'post';
+      div.innerHTML = `<h2>${post.titulo}</h2><p>${post.conteudo}</p>`;
+      container.appendChild(div);
+    });
+  </script>
+</body>
+</html>
